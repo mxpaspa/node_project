@@ -17,14 +17,11 @@ app.get('/', function (req, res) {
 
     });
 
-
-
-
 var request = require('request')
 var cheerio =require('cheerio')
 var app = express()
 
-var article_link = 'https://www.welt.de/finanzen/article163334543/Der-Tag-nach-dem-Euro-Das-wuerde-in-Europa-passieren.html'
+var article_link = 'https://www.welt.de/finanzen/article163334543/Der-Tag-nach-dem-Euro-Das-wuerde-in-Europa-passieren.html';
 
 
 //

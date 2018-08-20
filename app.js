@@ -7,18 +7,13 @@ let app = express();
 app.get('/', function (req, res) {
   res.setHeader('Content-Type', 'application/json');
   let title, content = "";
-  request('https://www.welt.de/finanzen/article163334543/Der-Tag-nach-dem-Euro-Das-wuerde-in-Europa-passieren.html', function (error, response, html) {
+  request('https://jalopnik.com/the-six-hours-of-silverstone-was-a-race-of-domination-i-1828449260', function (error, response, html) {
     if (!error && response.statusCode == 200) {
-      $ = cheerio.load(html);
-      $('.c-headline').each(function() {
-        title = $(this).text();
-      });
+      const $ = cheerio.load(html);
+      title = $('.headline hover-highlight entry-title js_entry-title').text()
 
-      $('.p').children().each(function() {
-        if (!$(this).hasClass('c-inline-element--has-commercials')) {
-          content += $(this).text();
-        }
-      });
+      content += $('p').text()
+
       res.json({
         "status": 200,
         "data": {
